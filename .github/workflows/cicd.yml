@@ -1,0 +1,29 @@
+name: Simple CI/CD with DevSecOps
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+    - name: Scan secrets with Gitleaks
+      uses: zricethezav/gitleaks-action@v2.3.3
+      with:
+        config-path: .gitleaks.toml
+
+    - name: Build project
+      run: npm run build

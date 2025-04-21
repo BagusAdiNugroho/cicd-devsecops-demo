@@ -1,0 +1,9 @@
+title = "Custom Gitleaks Configuration"
+description = "Scan for hardcoded secrets in codebase"
+version = 3
+
+[[rules]]
+  id = "apikey-generic"
+  description = "Generic API Key"
+  regex = '''(?i)(api[_-]?key|secret|token)[=:]["']?[a-z0-9]{32,45}["']?'''
+  tags = ["apikey", "security", "custom"]
