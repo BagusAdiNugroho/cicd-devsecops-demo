@@ -1,11 +1,5 @@
 title = "Gitleaks config"
 
-[allowlist]
-description = "Exclude common safe patterns"
-regexes = [
-  '''(?i)dummy[_-]?secret''',
-  '''(?i)1234567890abcdef'''
-]
 
 [[rules]]
 id = "generic-api-key"
